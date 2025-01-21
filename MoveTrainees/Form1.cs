@@ -7,18 +7,29 @@ namespace MoveTrainees
     public partial class Form1 : Form
     {
         private List<Trainee> trainees;
+        private int[] labs;
+        private int currentLab = 1;
         public Form1()
         {
             trainees = new List<Trainee>();
             InitializeComponent();
+            labs = new int[] { 1, 2};
             FillCheckedListBoxWithTrainees();
+            InitComboLab();
+        }
+
+        private void InitComboLab()
+        {
+            foreach(int i in labs)
+                comboBox_lab.Items.Add("lab " + i);
+            comboBox_lab.SelectedIndex = 0;
         }
 
         private void btn_MoveTrainee_Click(object sender, EventArgs e)
         {
             foreach (int index in chkedListBox_Trainees.CheckedIndices)
             {
-                trainees[index].lab = 1;
+                trainees[index].lab = currentLab;
             }
             //update checked list box - lab trainee
             AssignTrainees();
@@ -41,7 +52,7 @@ namespace MoveTrainees
                 {
                     chkedListBox_Trainees.Items.Add(t);
                 }
-                else 
+                else if (t.lab == currentLab) 
                 {
                     //change to else if and assign each trainee to its lab
                     chkedListBox_LabTrainees.Items.Add(t);
@@ -69,7 +80,7 @@ namespace MoveTrainees
         {
             foreach (Trainee t in trainees)
                 if(t.lab == 0)
-                    t.lab = 1;
+                    t.lab = currentLab;
             AssignTrainees();
         }
 
@@ -83,8 +94,14 @@ namespace MoveTrainees
         private void btn_MoveAllLabTrainees_Click(object sender, EventArgs e)
         {
             foreach(Trainee t in trainees)
-                if(t.lab == 1)
+                if(t.lab == currentLab)
                     t.lab = 0;
+            AssignTrainees();
+        }
+
+        private void comboBox_lab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentLab = labs[comboBox_lab.SelectedIndex];
             AssignTrainees();
         }
     }

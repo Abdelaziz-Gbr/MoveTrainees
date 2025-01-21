@@ -38,6 +38,7 @@ namespace MoveTrainees
             this.btn_MoveAllLabTrainees = new System.Windows.Forms.Button();
             this.chkedListBox_LabTrainees = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBox_lab = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -116,11 +117,23 @@ namespace MoveTrainees
             this.label2.TabIndex = 6;
             this.label2.Text = "Lab Trainees";
             // 
+            // comboBox_lab
+            // 
+            this.comboBox_lab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_lab.FormattingEnabled = true;
+            this.comboBox_lab.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.comboBox_lab.Location = new System.Drawing.Point(596, 33);
+            this.comboBox_lab.Name = "comboBox_lab";
+            this.comboBox_lab.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_lab.TabIndex = 8;
+            this.comboBox_lab.SelectedIndexChanged += new System.EventHandler(this.comboBox_lab_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox_lab);
             this.Controls.Add(this.chkedListBox_LabTrainees);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_MoveAllLabTrainees);
@@ -146,6 +159,7 @@ namespace MoveTrainees
         private System.Windows.Forms.Button btn_MoveAllLabTrainees;
         private System.Windows.Forms.CheckedListBox chkedListBox_LabTrainees;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox_lab;
     }
 }
 
